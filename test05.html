@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>준비 적응교육 통지서</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #eee;
+        }
+
+        /* A4용지 영역 박스 스타일 */
+        .a4-wrapper {
+            width: 794px;
+            /* A4 폭(픽셀) */
+            min-height: 1123px;
+            /* A4 높이(픽셀) */
+            margin: 80px auto;
+            /* 위아래로 80px씩 여백, 좌우는 auto로 중앙 정렬 */
+            background: #fff;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            padding: 10px 40px;
+            overflow: hidden;
+            border: 1px solid #000;
+        }
+
+        body {
+            font-family: 'Nanum Myeongjo', serif;
+
+            font-size: 13px;
+            line-height: 1.6;
+            color: #222;
+        }
+
+        .header {
+            text-align: center;
+        }
+
+        .header_title {
+            font-size: 30px;
+            /* letter-spacing: 12px; */
+            padding-bottom: 15px;
+            font-weight: bold;
+        }
+
+        /* 인쇄 미디어 쿼리 */
+        @media print {
+            input[type="date"]::-webkit-calendar-picker-indicator {
+                opacity: 0;
+                text-align: center;
+            }
+        }
+
+        .btn-area {
+            text-align: right;
+            margin: 20px auto;
+            max-width: 794px;
+        }
+
+        button {
+            padding: 8px 16px;
+            font-size: 14px;
+            background-color: #2b6cb0;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
+
+            html,
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background: #fff;
+            }
+
+            .btn-area {
+                display: none;
+            }
+
+            input,
+            select {
+                appearance: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                border: none;
+                background: none;
+            }
+
+            .a4-wrapper {
+                box-shadow: none;
+                border: none;
+                margin: 0 auto;
+            }
+        }
+
+        .dFlex {
+            display: flex;
+        }
+
+        .bd1px {
+            border: 1px solid #000;
+        }
+
+        .title {
+            display: inline-block;
+            width: 120px;
+            text-align: center;
+            padding: 10px 8px;
+        }
+
+        .content {
+            display: inline-block;
+            flex: 1;
+            text-align: left;
+            padding: 10px 8px;
+        }
+
+        /* 같은 행에서는 첫 번째 요소 이후의 왼쪽 테두리 제거 (수평 중복 제거) */
+        .dFlex>.bd1px:not(:first-child) {
+            border-left: none;
+        }
+
+        /* 연속된 행 사이의 상단 테두리 제거 (수직 중복 제거) */
+        .dFlex+.dFlex>.bd1px {
+            border-top: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="btn-area">
+        <button onclick="window.print()">PDF로 저장</button>
+    </div>
+
+    <div class="a4-wrapper">
+        <div style="padding: 45px; font-size: 11px;">
+
+            <div class="header">
+                <br><br><br><br><br>
+                <div class="header_title" style="font-size: 20px;">준비 적응교육 통지서</div>
+            </div>
+
+            <p style="font-size: 10px; letter-spacing: -0.5px;">
+                ※ 대안교육 위탁교육기관에서 재적학교에 대안교육 위탁대상 학생의 적응교육 일정을 통지하는 서류입니다
+            </p>
+
+            <div class="dFlex">
+                <div class="bd1px title">성 명</div>
+                <div class="bd1px content">김하랑</div>
+            </div>
+
+            <div class="dFlex">
+                <div class="bd1px title">주 소</div>
+                <div class="bd1px content">구미시</div>
+            </div>
+
+            <div class="dFlex">
+                <div class="bd1px title" style="width: 120px;">재 적 학 교</div>
+                <div class="bd1px content">선주고등학교</div>
+                <div class="bd1px title" style="width: 100px; letter-spacing: -1px;">학년/반/번호</div>
+                <div class="bd1px content" style="text-align: center;">1 학 년 8 반 8번</div>
+            </div>
+
+            <div class="dFlex">
+                <div class="dFlex bd1px">
+                    <div style="width: 60px; border: 1px solid #000; text-align: center; padding-top: 80px;">
+                        위탁준비<br>적응교육
+                    </div>
+                    <div style="width: 75px; text-align: center;">
+                        <div class="bd1px" style="height: 30px; padding-top: 10px;">기 관 명</div>
+                        <div class="bd1px" style="height: 30px; padding-top: 10px;">교육기간</div>
+                        <div class="bd1px" style="height: 72px; line-height: 40px; padding-top: 40px;">기관안내</div>
+                    </div>
+                </div>
+                <div>
+                    <div class="bd1px" style="width: 476px; height: 30px; padding: 10px 0 0 5px;">해오름학교</div>
+                    <div class="bd1px" style="width: 476px; height: 30px; padding: 10px 0 0 5px;">2025년 04월 8일 부터 ~
+                        2025년
+                        04월 14일 까지</div>
+                    <div class="dFlex bd1px">
+                        <div class="bd1px" style="width: 60px; height: 50px; line-height: 50px; text-align: center;">
+                            기관주소</div>
+                        <div class="bd1px" style="width: 413px; height: 42px; padding: 8px 0 0 5px;">
+                            <span>
+                                경북 구미시 구미대로 350-27<br>
+                                구미대학교 산학융합캠퍼스 404호
+                            </span>
+                        </div>
+                    </div>
+                    <div class="dFlex bd1px">
+                        <div class="bd1px" style="width: 60px; height: 32px; line-height: 32px; text-align: center;">
+                            전화/팩스</div>
+                        <div class="bd1px" style="width: 413px; height: 26px; padding: 6px 0 0 5px;">
+                            전화:054-440-1211&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 팩스:054-440-1224
+                        </div>
+                    </div>
+                    <div class="dFlex bd1px">
+                        <div class="bd1px" style="width: 60px; height: 32px; line-height: 32px; text-align: center;">메 일
+                        </div>
+                        <div class="bd1px" style="width: 413px; height: 26px; padding: 6px 0 0 5px;">
+                            heorem1189@naver.com</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bd1px" style="font-size: 14px; padding: 10px 0 10px 5px;"><b>[적응교육 안내사항]</b></div>
+
+            <div class="bd1px" style="height: 100px; padding: 30px 0 0 5px;">
+                <p>
+                    1. 적응교육수료후대안교육 위탁교육기관의대안교육운영위원회 협의를거쳐수탁여부통지<br>
+                    2. 적응교육기간중출결상황은교육수료후수탁통지서 또는 미수탁통지서로 통보
+                </p>
+            </div>
+
+            <div class="bd1px" style="text-align: center;"><br><br>
+                <p style="font-size: 15px;">2025년 04월 7일</p>
+                <p style="font-size: 16px;"><b>대안교육 위탁교육기관 해오름학교장</b></p>
+                <p style="font-size: 20px;"><b>선주고등학교장 귀하</b></p>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

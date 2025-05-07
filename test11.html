@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대안교육 위탁생 수탁통지서</title>
+    <style>
+        body {
+            font-family: Batang, BatangChe, serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .document-container {
+            width: 650px;
+            position: relative;
+            border: 1px solid #000;
+            padding: 20px;
+        }
+
+        .corner-tl,
+        .corner-tr,
+        .corner-bl,
+        .corner-br {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+        }
+
+        .corner-tl {
+            top: 0;
+            left: 0;
+            border-top: 1px solid #000;
+            border-left: 1px solid #000;
+        }
+
+        .corner-tr {
+            top: 0;
+            right: 0;
+            border-top: 1px solid #000;
+            border-right: 1px solid #000;
+        }
+
+        .corner-bl {
+            bottom: 0;
+            left: 0;
+            border-bottom: 1px solid #000;
+            border-left: 1px solid #000;
+        }
+
+        .corner-br {
+            bottom: 0;
+            right: 0;
+            border-bottom: 1px solid #000;
+            border-right: 1px solid #000;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .description {
+            text-align: left;
+            font-size: 14px;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .info-container {
+            border: 1px solid #000;
+            margin-bottom: 20px;
+        }
+
+        /* 기본 행/셀 스타일 */
+        .student-row,
+        .guidance-row,
+        .prep-row {
+            display: flex;
+            border-bottom: 1px solid #000;
+        }
+
+        .student-row:last-child,
+        .guidance-row:last-child,
+        .prep-row:last-child {
+            border-bottom: none;
+        }
+
+        .cell {
+            padding: 5px;
+            border-right: 1px solid #000;
+        }
+
+        .cell:last-child {
+            border-right: none;
+        }
+
+        .label-cell {
+            width: 80px;
+            background-color: #f5f5f5;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .value-cell {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .guidance-label,
+        .prep-label {
+            width: 80px;
+            background-color: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-right: 1px solid #000;
+        }
+
+        .guidance-sublabel,
+        .prep-sublabel {
+            width: 80px;
+            background-color: #f5f5f5;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-right: 1px solid #000;
+        }
+
+        .guidance-value,
+        .prep-value {
+            flex: 1;
+            padding: 5px 0 5px 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .schedule-header,
+        .attendance-row {
+            display: flex;
+            border-bottom: 1px solid #000;
+        }
+
+        .schedule-day,
+        .attendance-label,
+        .attendance-day {
+            text-align: center;
+            padding: 5px 0;
+            border-right: 1px solid #000;
+        }
+
+        .attendance-label {
+            width: 80px;
+            background-color: #f5f5f5;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .attendance-day {
+            flex: 1;
+        }
+
+        .attendance-day:last-child,
+        .schedule-day:last-child {
+            border-right: none;
+        }
+
+        .note-right {
+            text-align: right;
+            padding-right: 10px;
+        }
+
+        .conclusion {
+            text-align: center;
+            margin: 30px 0;
+            font-size: 16px;
+        }
+
+        .date {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 16px;
+        }
+
+        .signature,
+        .principal {
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .signature {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="document-container">
+        <div class="corner-tl"></div>
+        <div class="corner-tr"></div>
+        <div class="corner-bl"></div>
+        <div class="corner-br"></div>
+
+        <div class="title">대안교육 위탁생 수탁통지서</div>
+
+        <div class="description">
+            ※ 본 통지서는 대안교육 위탁교육기관에서 준비적응교육 수료후 과정학교에 위탁확정의 수락여부를 통지하는 서류 입니다.
+        </div>
+
+        <div class="info-container">
+            <div class="student-row">
+                <div class="cell label-cell">성 명</div>
+                <div class="cell value-cell">김창명</div>
+                <div class="cell label-cell">생년월일</div>
+                <div class="cell value-cell">2009년 01월 23일</div>
+            </div>
+            <div class="student-row">
+                <div class="cell label-cell">주 소</div>
+                <div class="cell value-cell" style="flex: 3;">구미시 박정희로 599, 111동 1304호</div>
+            </div>
+            <div class="student-row">
+                <div class="cell label-cell">재적학교명</div>
+                <div class="cell value-cell">선주고등학교</div>
+                <div class="cell label-cell">학년/반/번호</div>
+                <div class="cell value-cell">1학년 3반 6번</div>
+            </div>
+            <div class="student-row">
+                <div class="cell label-cell">위탁기관명</div>
+                <div class="cell value-cell">해오름학교</div>
+                <div class="cell label-cell">기관연락처</div>
+                <div class="cell value-cell">054-440-1211</div>
+            </div>
+
+            <!-- 본교위탁교육안내 섹션 -->
+            <div class="guidance-section">
+                <div class="guidance-label" style="height: 120px;">본 교 위 탁<br>교 육 안 내</div>
+                <div class="guidance-content">
+                    <div class="guidance-row">
+                        <div class="guidance-sublabel">등 교 일</div>
+                        <div class="guidance-value">2025년 04월 08일 부터</div>
+                    </div>
+                    <div class="guidance-row">
+                        <div class="guidance-sublabel">수 탁 일</div>
+                        <div class="guidance-value">2025년 04월 15일 부터</div>
+                    </div>
+                    <div class="guidance-row">
+                        <div class="guidance-sublabel">위탁기간</div>
+                        <div class="guidance-value">2025년 04월 15일부터 2026년 02월 28일 까지</div>
+                    </div>
+                    <div class="guidance-row">
+                        <div class="guidance-sublabel">안내사항</div>
+                        <div class="guidance-value"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 위탁준비적응교육 섹션 -->
+            <div class="prep-section">
+                <div class="prep-label" style="height: 180px;">위<br>탁<br>준비적응교육</div>
+                <div class="prep-content">
+                    <div class="prep-row">
+                        <div class="prep-sublabel">기 간</div>
+                        <div class="prep-value">2025년 04월 08일 부터 2025년04월 14일 까지(5일간)</div>
+                    </div>
+                    <div class="prep-row">
+                        <div class="prep-sublabel">교육기관</div>
+                        <div class="prep-value">해오름학교</div>
+                    </div>
+
+                    <!-- 출결 테이블: CSS Grid 방식 -->
+                    <div class="attendance-table"
+                        style="display: grid; grid-template-columns: 80px repeat(6, 1fr) 150px; grid-template-rows: auto auto auto; border: 1px solid #000; margin-top: 10px;">
+                        <!-- 왼쪽 '출 결' 셀 (행 1~3, 1열) -->
+                        <div
+                            style="grid-row: 1 / span 3; grid-column: 1; background-color: #f5f5f5; padding: 5px; border: 1px solid #000; font-size: 12px; display: flex; align-items: center; justify-content: center;">
+                            출 결
+                        </div>
+                        <!-- 1행: 날짜 헤더 -->
+                        <div
+                            style="grid-row: 1; grid-column: 2; text-align: center; padding: 5px; border: 1px solid #000;">
+                            일시</div>
+                        <div
+                            style="grid-row: 1; grid-column: 3; text-align: center; padding: 5px; border: 1px solid #000;">
+                            4/08</div>
+                        <div
+                            style="grid-row: 1; grid-column: 4; text-align: center; padding: 5px; border: 1px solid #000;">
+                            4/09</div>
+                        <div
+                            style="grid-row: 1; grid-column: 5; text-align: center; padding: 5px; border: 1px solid #000;">
+                            4/10</div>
+                        <div
+                            style="grid-row: 1; grid-column: 6; text-align: center; padding: 5px; border: 1px solid #000;">
+                            4/11</div>
+                        <div
+                            style="grid-row: 1; grid-column: 7; text-align: center; padding: 5px; border: 1px solid #000;">
+                            4/14</div>
+                        <div style="grid-row: 1; grid-column: 8; border: 1px solid #000;"></div>
+
+                        <!-- 2행: 적응교육 출석현황 -->
+                        <div
+                            style="grid-row: 2; grid-column: 2; background-color: #f5f5f5; padding: 5px; border: 1px solid #000; font-size: 12px; text-align: center;">
+                            적응교육<br>출석현황
+                        </div>
+                        <div
+                            style="grid-row: 2; grid-column: 3; text-align: center; padding: 5px; border: 1px solid #000;">
+                            정변</div>
+                        <div
+                            style="grid-row: 2; grid-column: 4; text-align: center; padding: 5px; border: 1px solid #000;">
+                            출석</div>
+                        <div
+                            style="grid-row: 2; grid-column: 5; text-align: center; padding: 5px; border: 1px solid #000;">
+                            출석</div>
+                        <div
+                            style="grid-row: 2; grid-column: 6; text-align: center; padding: 5px; border: 1px solid #000;">
+                            출석</div>
+                        <div
+                            style="grid-row: 2; grid-column: 7; text-align: center; padding: 5px; border: 1px solid #000;">
+                            출석</div>
+                        <!-- 오른쪽 '특이사항 없음' 셀: 2행~3행, 8열 -->
+                        <div
+                            style="grid-row: 2 / span 2; grid-column: 8; padding: 5px 10px; border: 1px solid #000; display: flex; align-items: center; justify-content: flex-end; text-align: right;">
+                            특이사항 없음
+                        </div>
+
+                        <!-- 3행: 교과학습 성취상태 -->
+                        <div
+                            style="grid-row: 3; grid-column: 2; background-color: #f5f5f5; padding: 5px; border: 1px solid #000; font-size: 12px; text-align: center;">
+                            교과학습<br>성취상태
+                        </div>
+                        <div
+                            style="grid-row: 3; grid-column: 3; text-align: center; padding: 5px; border: 1px solid #000;">
+                            정변</div>
+                        <div
+                            style="grid-row: 3; grid-column: 4; text-align: center; padding: 5px; border: 1px solid #000;">
+                            우수</div>
+                        <div
+                            style="grid-row: 3; grid-column: 5; text-align: center; padding: 5px; border: 1px solid #000;">
+                            우수</div>
+                        <div
+                            style="grid-row: 3; grid-column: 6; text-align: center; padding: 5px; border: 1px solid #000;">
+                            우수</div>
+                        <div
+                            style="grid-row: 3; grid-column: 7; text-align: center; padding: 5px; border: 1px solid #000;">
+                            우수</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="conclusion">위와 같이 대안 위탁교육을 허락합니다.</div>
+        <div class="date">2025년 04월 15일</div>
+        <div class="signature">대안교육 위탁교육기관 해오름학교장</div>
+        <div class="principal">선주고등학교장 귀하</div>
+    </div>
+</body>
+
+</html>

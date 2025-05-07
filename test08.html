@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>준비 적응교육 통지서</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #eee;
+        }
+
+        body {
+            font-family: "Batang", "바탕", serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #222;
+        }
+
+        /* A4용지 영역 박스 스타일 */
+        .a4-wrapper {
+            width: 794px;
+            min-height: 1123px;
+            margin: 20px auto;
+            background: #fff;
+            box-sizing: border-box;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .content-wrapper {
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 30px 0 0;
+            font-size: 24px;
+            letter-spacing: 5px;
+        }
+
+        .info-text {
+            margin: 10px 0 0;
+            font-size: 13px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid black;
+            margin-top: 10px;
+        }
+
+        td {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: center;
+            height: 30px;
+        }
+
+        .left-aligned {
+            text-align: left;
+        }
+
+        .vertical-text {
+            width: 12%;
+            text-orientation: upright;
+            padding: 10px 0;
+            text-align: center;
+            letter-spacing: 3px;
+        }
+
+        .span-row {
+            vertical-align: middle;
+        }
+
+        .row-header {
+            width: 25%;
+            letter-spacing: 10px;
+        }
+
+        .footer-note {
+            text-align-last: left;
+            letter-spacing: -1px;
+            padding: 20px 0 20px 15px;
+        }
+
+        .footer-date {
+            padding: 15px;
+            text-align: center;
+            border: none;
+        }
+
+        .footer-title {
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            border: none;
+        }
+
+        .footer-signature {
+            padding: 25px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        ol {
+            margin-left: 20px;
+        }
+
+        /* 입력 필드 스타일링 */
+        input[type="text"] {
+            width: 90%;
+            height: 25px;
+            border: none;
+            background: none;
+            text-align: left;
+            padding: 5px 0;
+            margin: 0;
+            font-size: 16px;
+            letter-spacing: 2px;
+        }
+
+        input[type="text"]:focus {
+            outline: 1px solid #007bff;
+            background-color: #f0f8ff;
+        }
+
+        /* 달력형식 스타일 */
+        .date-picker {
+            width: 100%;
+            padding: 2px;
+            font-family: "Batang", "바탕", serif;
+            font-size: 16px;
+            border: none;
+            text-align: center;
+            background: none;
+            cursor: pointer;
+        }
+
+        .date-picker::-webkit-calendar-picker-indicator {
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'/%3E%3Cline x1='16' y1='2' x2='16' y2='6'/%3E%3Cline x1='8' y1='2' x2='8' y2='6'/%3E%3Cline x1='3' y1='10' x2='21' y2='10'/%3E%3C/svg%3E") center/contain no-repeat;
+            width: 10px;
+            height: 10px;
+            cursor: pointer;
+        }
+
+        .date-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .date-separator {
+            margin: 0 10px;
+            font-size: 16px;
+        }
+
+        .btn-area {
+            text-align: right;
+            margin: 20px auto;
+            max-width: 794px;
+        }
+
+        button {
+            padding: 8px 16px;
+            font-size: 14px;
+            background-color: #2b6cb0;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        @media print {
+            .btn-area {
+                display: none;
+            }
+        }
+
+        @media print {
+
+            input[type="text"],
+            select,
+            .date-picker {
+                font-size: 18px;
+                font-family: "Batang", "바탕", serif;
+                border: none;
+                background: transparent;
+                box-shadow: none;
+                pointer-events: none;
+                -webkit-appearance: none;
+                appearance: none;
+            }
+        }
+
+
+        .select-school,
+        .select-box {
+            border: 1px solid #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="btn-area">
+        <button onclick="window.print()">PDF로 저장</button>
+    </div>
+
+    <div class="a4-wrapper">
+        <div class="content-wrapper">
+            <h1>준비 적응교육 통지서</h1>
+            <p class="info-text">※ 대안교육 위탁교육기관에서 재적학교에 대안교육 위탁대상 학생의 적응교육 일정을 통지하는 서류입니다.</p>
+            <table>
+                <tr>
+                    <td colspan="2" class="row-header">성 &nbsp;명</td>
+                    <td colspan="3"><input type="text" placeholder="이름을 입력하세요"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="row-header">주 &nbsp;소</td>
+                    <td colspan="3"><input type="text" placeholder="주소를 입력하세요"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="row-header">재적학교</td>
+                    <td>
+                        <select class="select-school">
+                            <optgroup label="칠곡군">
+                                <option>순심고등학교</option>
+                                <option>순심여자고등학교</option>
+                                <option>약목고등학교</option>
+                                <option>북삼고등학교</option>
+                                <option>석적고등학교</option>
+                                <option>동명고등학교</option>
+                            </optgroup>
+                            <optgroup label="구미시">
+                                <option>구미고등학교</option>
+                                <option>구미여자고등학교</option>
+                                <option>금오고등학교</option>
+                                <option>인동고등학교</option>
+                                <option>상모고등학교</option>
+                                <option>사곡고등학교</option>
+                                <option selected>선주고등학교</option>
+                                <option>형곡고등학교</option>
+                                <option>구미정보고등학교</option>
+                                <option>구미여자상업고등학교</option>
+                                <option>금오공업고등학교</option>
+                                <option>선산고등학교</option>
+                                <option>경북외국어고등학교</option>
+                                <option>경북생활과학고등학교</option>
+                                <option>경구고등학교</option>
+                                <option>구미제일고등학교</option>
+                                <option>오상고등학교</option>
+                                <option>도개고등학교</option>
+                                <option>현일고등학교</option>
+                                <option>구미산동고등학교</option>
+                                <option>구미혜당학교</option>
+                            </optgroup>
+                            <optgroup label="김천시">
+                                <option>김천고등학교</option>
+                                <option>김천여자고등학교</option>
+                                <option>김천중앙고등학교</option>
+                                <option>율곡고등학교</option>
+                                <option>성의고등학교</option>
+                                <option>성의여자고등학교</option>
+                                <option>김천예술고등학교</option>
+                                <option>경북과학기술고등학교</option>
+                                <option>김천생명과학고등학교</option>
+                                <option>한일여자고등학교</option>
+                                <option>경북미용예술고등학교</option>
+                                <option>링컨중·고등학교</option>
+                            </optgroup>
+                            <optgroup label="의성군">
+                                <option>의성고등학교</option>
+                                <option>의성여자고등학교</option>
+                                <option>의성공업고등학교</option>
+                                <option>안계고등학교</option>
+                                <option>금성고등학교</option>
+                                <option>의성유니텍고등학교</option>
+                            </optgroup>
+                        </select>
+                    </td>
+                    <td>학년/반/번호</td>
+                    <td>
+                        <div class="select-container">
+                            <select class="select-box select-grade">
+                                <option>학년</option>
+                                <option selected>1학년</option>
+                                <option>2학년</option>
+                                <option>3학년</option>
+                            </select>
+                            <select class="select-box select-class">
+                                <option>반</option>
+                                <option>1반</option>
+                                <option>2반</option>
+                                <option>3반</option>
+                                <option>4반</option>
+                                <option>5반</option>
+                                <option>6반</option>
+                                <option>7반</option>
+                                <option selected>8반</option>
+                                <option>9반</option>
+                                <option>10반</option>
+                            </select>
+                            <select class="select-box select-number">
+                                <option>번호</option>
+                                <option>1번</option>
+                                <option>2번</option>
+                                <option>3번</option>
+                                <option>4번</option>
+                                <option>5번</option>
+                                <option>6번</option>
+                                <option>7번</option>
+                                <option selected>8번</option>
+                                <option>9번</option>
+                                <option>10번</option>
+                                <option>11번</option>
+                                <option>12번</option>
+                                <option>13번</option>
+                                <option>14번</option>
+                                <option>15번</option>
+                                <option>16번</option>
+                                <option>17번</option>
+                                <option>18번</option>
+                                <option>19번</option>
+                                <option>20번</option>
+                                <option>100번</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="5" class="vertical-text span-row">위탁준비<br>적응교육</td>
+                    <td style="width: 100px;">기 관 명</td>
+                    <td colspan="5">
+                        <input type="text" placeholder="기관명" value="해오름학교" style="transform: translateX(-20px);">
+                    </td>
+                </tr>
+                <tr>
+                    <td>교육기간</td>
+                    <td colspan="5">
+                        <div class="date-container">
+                            <div class="date-selector" id="start-date-selector">
+                                <input type="date" class="date-picker" id="start-date">
+                            </div>
+                            <span class="date-separator">~</span>
+                            <div class="date-selector" id="end-date-selector">
+                                <input type="date" class="date-picker" id="end-date">
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="3">기관안내</td>
+                    <td style="width: 100px; margin: 0; padding: 0;">기관주소</td>
+                    <td style="text-align: left;" colspan="2">
+                        <input type="text" placeholder="기관 주소 첫 줄" value="경북 구미시 구미대로 350-27"
+                            style="text-align: left;"><br>
+                        <input type="text" placeholder="기관 주소 두 번째 줄" value="구미대학교 산학융합캠퍼스 404호"
+                            style="text-align: left;">
+                    </td>
+                </tr>
+                <tr>
+                    <td>전화/팩스</td>
+                    <td style="text-align: left;" colspan="2">
+                        <input type="text" placeholder="전화/팩스 정보" value="전화:054-440-1211    팩스:054-440-1224"
+                            style="text-align: left;">
+                    </td>
+                </tr>
+                <tr>
+                    <td>메 &nbsp;&nbsp;&nbsp; 일</td>
+                    <td colspan="2">
+                        <input type="text" placeholder="이메일 주소" value="heorem1189@naver.com"
+                            style="transform: translateX(-20px);">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5" style="text-align: left; font-size: 18px; padding: 15px;">
+                        <strong>[적응교육 안내사항]</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5" class="footer-note">
+                        <p>1. 적응교육 수료 후 대안교육 위탁교육기관의 대안교육운영위원회 협의를 거쳐 수락여부 통지</p>
+                        <p>2. 적응교육 기간 중 출결 상황은 교육 수료 후 수락통지서 또는 미수락통지서로 통보</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5" style="height: 50px; border-bottom: none;"></td>
+                </tr>
+                <tr>
+                    <td colspan="5" class="footer-date"
+                        style="border-left: 1px solid black; border-right: 1px solid black; border-top: none;">
+                        <div class="date-selector" id="issue-date-selector" style="border: 1px solid #fff;">
+                            <select id="issue-year"></select>
+                            <select id="issue-month"></select>
+                            <select id="issue-day"></select>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5" class="footer-title"
+                        style="border-left: 1px solid black; border-right: 1px solid black; border-top: none;">
+                        <input type="text" placeholder="발신자" value="대안교육 위탁교육기관 해오름학교장"
+                            style="text-align: center; font-weight: bold; font-family: Batang, 바탕, serif; font-size: 18px; ">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="5" class="footer-signature"
+                        style="border-left: 1px solid black; border-right: 1px solid black; border-top: none; border-bottom: 1px solid black;">
+                        <input type="text" placeholder="수신자" value="선주고등학교장 귀하"
+                            style="font-family: Batang, 바탕, serif; text-align: center; margin-left: 94px; font-weight: bold; font-size: 22px; padding-bottom: 50px;">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // footer-date select 요소 생성
+            var yearSelect = document.getElementById('issue-year');
+            var monthSelect = document.getElementById('issue-month');
+            var daySelect = document.getElementById('issue-day');
+
+            var currentYear = new Date().getFullYear();
+            // 년: 현재 연도 ±5년
+            for (var y = currentYear - 5; y <= currentYear + 5; y++) {
+                var opt = document.createElement('option');
+                opt.value = y;
+                opt.text = y + "년";
+                yearSelect.appendChild(opt);
+            }
+            // 월: 1~12월
+            for (var m = 1; m <= 12; m++) {
+                var opt = document.createElement('option');
+                opt.value = m;
+                opt.text = m + "월";
+                monthSelect.appendChild(opt);
+            }
+            // 일: 1~31일
+            for (var d = 1; d <= 31; d++) {
+                var opt = document.createElement('option');
+                opt.value = d;
+                opt.text = d + "일";
+                daySelect.appendChild(opt);
+            }
+            // 기본 선택: 오늘 날짜
+            var today = new Date();
+            yearSelect.value = today.getFullYear();
+            monthSelect.value = today.getMonth() + 1;
+            daySelect.value = today.getDate();
+        });
+    </script>
+</body>
+
+</html>

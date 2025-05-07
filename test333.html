@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>동적 홈페이지 예제 + Google Translate</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+        }
+
+        header {
+            background-color: #f5f5f5;
+            padding: 15px;
+            margin-bottom: 30px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        nav li {
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        #google_translate_element {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 9999;
+            border: 1px solid #ccc;
+            padding: 5px;
+            background-color: #fff;
+        }
+
+        #dynamic-section {
+            margin-top: 30px;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 10px 0;
+            background-color: #fafafa;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 구글 번역 위젯 -->
+    <div id="google_translate_element"></div>
+
+    <!-- 헤더 -->
+    <header>
+        <h1>디사이트 솔루션 홈페이지</h1>
+        <nav>
+            <ul id="menu">
+                <!-- 동적으로 메뉴 생성됨 -->
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 본문 -->
+    <section id="dynamic-section">
+        <p>환영합니다! 아래 버튼을 클릭하면 새로운 콘텐츠가 동적으로 추가됩니다.</p>
+        <button id="add-card-btn">콘텐츠 추가</button>
+
+        <div id="card-container"></div>
+    </section>
+
+    <!-- 메뉴와 카드 동적 생성 스크립트 -->
+    <script>
+        const menuItems = ['홈', '서비스', '포트폴리오', '문의하기'];
+        const menuEl = document.getElementById('menu');
+
+        menuItems.forEach(item => {
+            const li = document.createElement('li');
+            li.textContent = item;
+            menuEl.appendChild(li);
+        });
+
+        document.getElementById('add-card-btn').addEventListener('click', () => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `<h3>새로운 동적 콘텐츠</h3><p>이 콘텐츠는 버튼 클릭 시 JavaScript로 동적으로 삽입된 텍스트입니다.</p>`;
+            document.getElementById('card-container').appendChild(card);
+        });
+    </script>
+
+    <!-- 구글 번역 스크립트 -->
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'ko',
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+        }
+    </script>
+
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+
+</html>

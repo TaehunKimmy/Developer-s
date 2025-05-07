@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대안교육 위탁생 수탁통지서</title>
+    <style>
+        /* 인쇄 시 A4 용지 설정 */
+        @media print {
+            .btn-area {
+                display: none;
+            }
+
+            input[type="text"] {
+                font-family: "Batang", "바탕", serif;
+                border: none;
+                background: transparent;
+                box-shadow: none;
+                pointer-events: none;
+                -webkit-appearance: none;
+                appearance: none;
+            }
+
+            select {
+                font-size: 18px;
+                font-family: "Batang", "바탕", serif;
+                border: none;
+                background: transparent;
+                box-shadow: none;
+                pointer-events: none;
+                -webkit-appearance: none;
+                appearance: none;
+            }
+        }
+
+        /* on-screen 스타일 */
+        body {
+            font-family: Batang, BatangChe, serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+            font-size: 16px;
+            background: #f0f0f0;
+        }
+
+        /* PDF 저장 버튼은 A4 밖에 고정 */
+        .btn-area {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .document-container {
+            width: 210mm;
+            height: 297mm;
+            position: relative;
+            border: 1px solid #000;
+            padding: 40px;
+            background: #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .corner-tl,
+        .corner-tr,
+        .corner-bl,
+        .corner-br {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+        }
+
+        .corner-tl {
+            top: 0;
+            left: 0;
+        }
+
+        .corner-tr {
+            top: 0;
+            right: 0;
+        }
+
+        .corner-bl {
+            bottom: 0;
+            left: 0;
+        }
+
+        .corner-br {
+            bottom: 0;
+            right: 0;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            margin-top: 30px;
+        }
+
+        .description {
+            text-align: left;
+            font-size: 14px;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .info-container {
+            border: 1px solid #000;
+            margin-bottom: 20px;
+        }
+
+        .row {
+            display: flex;
+            border-bottom: 1px solid #000;
+        }
+
+        .row:last-child {
+            border-bottom: none;
+        }
+
+        .cell {
+            border-right: 1px solid #000;
+            padding: 5px;
+        }
+
+        .cell:last-child {
+            border-right: none;
+        }
+
+        .label-cell {
+            width: 100px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .value-cell {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding-left: 15px;
+        }
+
+        .student-row {
+            display: flex;
+            border-bottom: 1px solid #000;
+        }
+
+        .guidance-section {
+            display: flex;
+            border-bottom: 1px solid #000;
+        }
+
+        .guidance-label {
+            width: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-right: 1px solid #000;
+        }
+
+        .guidance-content {
+            flex: 1;
+        }
+
+        .guidance-row {
+            display: flex;
+            border-bottom: 1px solid #000;
+        }
+
+        .guidance-row:last-child {
+            border-bottom: none;
+        }
+
+        .guidance-sublabel {
+            width: 80px;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-right: 1px solid #000;
+            transform: translateY(2px);
+        }
+
+        .guidance-value {
+            flex: 1;
+            padding: 5px 0 5px 5px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+        }
+
+        .prep-section {
+            display: flex;
+        }
+
+        .prep-label {
+            width: 120px;
+            border-right: 1px solid #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .prep-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .prep-row {
+            display: flex;
+            border-bottom: 1px solid #000;
+        }
+
+        .prep-row:last-child {
+            border-bottom: none;
+        }
+
+        .prep-sublabel {
+            width: 80px;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-right: 1px solid #000;
+        }
+
+        .prep-value {
+            flex: 1;
+            padding: 5px 0 5px 5px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+        }
+
+        .attendance-table {
+            display: grid;
+            grid-template-columns: 91px repeat(6, 1fr) 150px;
+            grid-template-rows: auto auto auto;
+            margin: 0;
+            padding: 0;
+        }
+
+        .attendance-table>div {
+            border-right: 1px solid #000;
+            border-bottom: 1px solid #000;
+            text-align: center;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        .conclusion {
+            text-align: center;
+            margin: 30px 0;
+            font-size: 16px;
+        }
+
+        .date {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 16px;
+        }
+
+        .signature {
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .principal {
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        button {
+            padding: 8px 16px;
+            font-size: 14px;
+            background-color: #2b6cb0;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        input[type="text"] {
+            border: none;
+            width: 100%;
+            font-size: 16px;
+            box-sizing: border-box;
+            font-family: Batang, BatangChe, serif;
+        }
+
+        input[type="date"] {
+            font-size: 16px;
+            width: 110px;
+            border: none;
+            text-align: right;
+        }
+
+        select {
+            border: none;
+        }
+
+        select.att-select {
+            border: none;
+            transform: translateY(4px);
+        }
+
+        /* 기존 att-date-input은 더 이상 사용 안함 */
+        /* select 스타일은 인라인으로 지정 */
+    </style>
+</head>
+
+<body>
+    <!-- PDF 저장 버튼은 A4 밖에 별도로 위치 -->
+    <div class="btn-area">
+        <button onclick="window.print()">PDF로 저장</button>
+    </div>
+
+    <div class="document-container">
+        <div class="corner-tl"></div>
+        <div class="corner-tr"></div>
+        <div class="corner-bl"></div>
+        <div class="corner-br"></div>
+
+        <div class="title">대안교육 위탁생 수탁통지서</div>
+
+        <div class="description">
+            ※ 본 통지서는 대안교육 위탁교육기관에서 준비적응교육 수료후 과정학교에 위탁확정의 수락여부를 통지하는 서류 입니다.
+        </div>
+
+        <div class="info-container">
+            <!-- 학생 정보 -->
+            <div class="student-row">
+                <div class="cell label-cell" style="padding: 10px;">성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;명</div>
+                <div class="cell value-cell"><input type="text" value="김창명"></div>
+                <div class="cell label-cell" style="padding: 10px;">생년월일</div>
+                <div class="cell value-cell" style="text-align: center;"><input type="text"></div>
+            </div>
+
+            <div class="student-row">
+                <div class="cell label-cell" style="padding: 10px;">주&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소</div>
+                <div class="cell value-cell" style="flex: 3;"><input type="text" value="구미시 박정희로 599, 111동 1304호"></div>
+            </div>
+
+            <div class="student-row">
+                <div class="cell label-cell" style="padding: 10px;">재적학교명</div>
+                <div class="cell value-cell"><input type="text" value="선주고등학교"></div>
+                <div class="cell label-cell" style="padding: 10px;">학년/반/번호</div>
+                <div class="cell value-cell">
+                    <select id="grade"></select>&nbsp;
+                    <select id="class"></select>&nbsp;
+                    <select id="number"></select>
+                </div>
+            </div>
+
+            <div class="student-row">
+                <div class="cell label-cell" style="padding: 10px;">위탁기관명</div>
+                <div class="cell value-cell">해오름학교</div>
+                <div class="cell label-cell" style="padding: 10px;">기관연락처</div>
+                <div class="cell value-cell">
+                    <input type="text" id="contact1" value="054" style="width:40px;"> -
+                    <input type="text" id="contact2" value="440" style="width:40px;"> -
+                    <input type="text" id="contact3" value="1211" style="width:60px;">
+                </div>
+            </div>
+
+            <!-- 본교 위탁교육안내 섹션 -->
+            <div class="guidance-section">
+                <div class="guidance-label" style="height: 120px;">
+                    본 교 위 탁<br>교 육 안 내
+                </div>
+                <div class="guidance-content">
+                    <div class="guidance-row">
+                        <div class="guidance-sublabel">등 교 일</div>
+                        <div class="guidance-value" style="padding-left: 5px;">
+                            <input type="date" value="년-월-일">부터
+                        </div>
+                    </div>
+                    <div class="guidance-row">
+                        <div class="guidance-sublabel">수 탁 일</div>
+                        <div class="guidance-value" style="padding-left: 5px;">
+                            <input type="date" value="년-월-일">부터
+                        </div>
+                    </div>
+                    <div class="guidance-row">
+                        <div class="guidance-sublabel">위탁기간</div>
+                        <div class="guidance-value" style="padding-left: 5px;">
+                            <input type="date" value="년-월-일">부터 <input type="date" value="년-월-일">까지
+                        </div>
+                    </div>
+                    <div class="guidance-row">
+                        <div class="guidance-sublabel">안내사항</div>
+                        <div class="guidance-value" style="padding-left: 10px;">
+                            <input type="text" style="font-size: 15px;" placeholder="안내사항을 입력하세요">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 위탁준비적응교육 섹션 -->
+            <div class="prep-section">
+                <div class="prep-label">
+                    위&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;탁<br>준비적응교육
+                </div>
+                <div class="prep-content">
+                    <div class="prep-row">
+                        <div class="prep-sublabel">기&nbsp;&nbsp;&nbsp;&nbsp;간</div>
+                        <div class="prep-value" style="padding-left: 5px;">
+                            <input type="date" value="년-월-일">부터 <input type="date" value="년-월-일">까지 (일간)
+                        </div>
+                    </div>
+                    <div class="prep-row">
+                        <div class="prep-sublabel">교육기관</div>
+                        <div class="prep-value" style="padding-left: 9px;">해오름학교</div>
+                    </div>
+
+                    <!-- 출결 테이블 -->
+                    <div class="attendance-table">
+                        <!-- 왼쪽 '출결' 라벨 -->
+                        <div
+                            style="grid-row: 1 / span 3; grid-column: 1; font-size: 16px; display: flex; align-items: center; justify-content: center; border-bottom: none; position: relative; z-index: 1;">
+                            출&nbsp;&nbsp;결
+                        </div>
+                        <!-- 일시 헤더 -->
+                        <div style="grid-row: 1; grid-column: 2; width:80px; font-size: 15px; align-content: center;">일
+                            시</div>
+                        <!-- 날짜 헤더: 4/08 -->
+                        <div style="grid-row: 1; grid-column: 3; font-size: 15px;">
+                            <select class="att-month" data-default="12" style="width:35px;"></select>/
+                            <select class="att-day" data-default="8" style="width:35px;"></select>
+                        </div>
+                        <!-- 날짜 헤더: 4/09 -->
+                        <div style="grid-row: 1; grid-column: 4; font-size: 15px;">
+                            <select class="att-month" data-default="4" style="width:35px;"></select>/
+                            <select class="att-day" data-default="9" style="width:35px;"></select>
+                        </div>
+                        <!-- 날짜 헤더: 4/10 -->
+                        <div style="grid-row: 1; grid-column: 5; font-size: 15px;">
+                            <select class="att-month" data-default="4" style="width:35px;"></select>/
+                            <select class="att-day" data-default="10" style="width:35px;"></select>
+                        </div>
+                        <!-- 날짜 헤더: 4/11 -->
+                        <div style="grid-row: 1; grid-column: 6; font-size: 15px;">
+                            <select class="att-month" data-default="4" style="width:35px;"></select>/
+                            <select class="att-day" data-default="11" style="width:35px;"></select>
+                        </div>
+                        <!-- 날짜 헤더: 4/14 -->
+                        <div style="grid-row: 1; grid-column: 7; font-size: 15px;">
+                            <select class="att-month" data-default="4" style="width:35px;"></select>/
+                            <select class="att-day" data-default="14" style="width:35px;"></select>
+                        </div>
+                        <!-- 특이사항 -->
+                        <div
+                            style="grid-row: 1; grid-column: 8; font-size: 15px; border-right: none; align-content: center;">
+                            특 이 사 항</div>
+
+                        <!-- 2행: 적응교육 출석현황 -->
+                        <div style="grid-row: 2; grid-column: 2; font-size: 12px;">
+                            적응교육<br>출석현황
+                        </div>
+                        <!-- 출결 select (row2, columns 3~7) -->
+                        <div style="grid-row: 2; grid-column: 3;">
+                            <select class="att-select">
+                                <option value="출석">출석</option>
+                                <option value="결석">결석</option>
+                                <option value="지각">지각</option>
+                                <option value="조퇴">조퇴</option>
+                                <option value="질병">질병</option>
+                            </select>
+                        </div>
+                        <div style="grid-row: 2; grid-column: 4;">
+                            <select class="att-select">
+                                <option value="출석">출석</option>
+                                <option value="결석">결석</option>
+                                <option value="지각">지각</option>
+                                <option value="조퇴">조퇴</option>
+                                <option value="질병">질병</option>
+                            </select>
+                        </div>
+                        <div style="grid-row: 2; grid-column: 5;">
+                            <select class="att-select">
+                                <option value="출석">출석</option>
+                                <option value="결석">결석</option>
+                                <option value="지각">지각</option>
+                                <option value="조퇴">조퇴</option>
+                                <option value="질병">질병</option>
+                            </select>
+                        </div>
+                        <div style="grid-row: 2; grid-column: 6;">
+                            <select class="att-select">
+                                <option value="출석">출석</option>
+                                <option value="결석">결석</option>
+                                <option value="지각">지각</option>
+                                <option value="조퇴">조퇴</option>
+                                <option value="질병">질병</option>
+                            </select>
+                        </div>
+                        <div style="grid-row: 2; grid-column: 7;">
+                            <select class="att-select">
+                                <option value="출석">출석</option>
+                                <option value="결석">결석</option>
+                                <option value="지각">지각</option>
+                                <option value="조퇴">조퇴</option>
+                                <option value="질병">질병</option>
+                            </select>
+                        </div>
+                        <!-- 오른쪽 '특이사항 없음' 셀: 2행~3행, 8열 -->
+                        <div
+                            style="grid-row: 2 / span 2; grid-column: 8; display: flex; align-items: center; justify-content: left; border-bottom: none; border-right: none;">
+                            특이사항 없음
+                        </div>
+
+                        <!-- 3행: 교과학습 성취상태 -->
+                        <div style="grid-row: 3; grid-column: 2; font-size: 12px; border-bottom: none;">
+                            교과학습<br>성취상태
+                        </div>
+                        <!-- 출결 select (row3, columns 3~7) -->
+                        <div style="grid-row: 3; grid-column: 3;border-bottom: none;">
+                            <select class="att-select">
+                                <option value="출석">출석</option>
+                                <option value="결석">결석</option>
+                                <option value="지각">지각</option>
+                                <option value="조퇴">조퇴</option>
+                                <option value="질병">질병</option>
+                            </select>
+                        </div>
+                        <div style="grid-row: 3; grid-column: 4;border-bottom: none;">
+                            <select class="att-select">
+                                <option value="출석">출석</option>
+                                <option value="결석">결석</option>
+                                <option value="지각">지각</option>
+                                <option value="조퇴">조퇴</option>
+                                <option value="질병">질병</option>
+                            </select>
+                        </div>
+                        <div style="grid-row: 3; grid-column: 5;border-bottom: none;">
+                            <select class="att-select">
+                                <option value="출석">출석</option>
+                                <option value="결석">결석</option>
+                                <option value="지각">지각</option>
+                                <option value="조퇴">조퇴</option>
+                                <option value="질병">질병</option>
+                            </select>
+                        </div>
+                        <div style="grid-row: 3; grid-column: 6;border-bottom: none;">
+                            <select class="att-select">
+                                <option value="출석">출석</option>
+                                <option value="결석">결석</option>
+                                <option value="지각">지각</option>
+                                <option value="조퇴">조퇴</option>
+                                <option value="질병">질병</option>
+                            </select>
+                        </div>
+                        <div style="grid-row: 3; grid-column: 7;border-bottom: none;">
+                            <select class="att-select">
+                                <option value="출석">출석</option>
+                                <option value="결석">결석</option>
+                                <option value="지각">지각</option>
+                                <option value="조퇴">조퇴</option>
+                                <option value="질병">질병</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="conclusion">
+            위와 같이 대안 위탁교육을 허락합니다.
+        </div>
+        <div class="date">2025년 04월 15일</div>
+        <div class="signature">대안교육 위탁교육기관 해오름학교장</div>
+        <div class="principal">선주고등학교장 귀하</div>
+    </div>
+
+    <!-- 스크립트를 사용해 학년, 반, 번호 select option 생성 및 날짜 select 옵션 생성 -->
+    <script>
+        // 학년 (1~3)
+        const gradeSelect = document.getElementById("grade");
+        for (let i = 1; i <= 3; i++) {
+            const option = document.createElement("option");
+            option.value = i;
+            option.text = i + "학년";
+            gradeSelect.appendChild(option);
+        }
+
+        // 반 (1~10)
+        const classSelect = document.getElementById("class");
+        for (let i = 1; i <= 10; i++) {
+            const option = document.createElement("option");
+            option.value = i;
+            option.text = i + "반";
+            classSelect.appendChild(option);
+        }
+
+        // 번호 (1~100)
+        const numberSelect = document.getElementById("number");
+        for (let i = 1; i <= 100; i++) {
+            const option = document.createElement("option");
+            option.value = i;
+            option.text = i + "번";
+            numberSelect.appendChild(option);
+        }
+
+        // 날짜 select 옵션 (월: 1~12, 일: 1~31)
+        const monthSelects = document.querySelectorAll(".att-month");
+        monthSelects.forEach(select => {
+            for (let m = 1; m <= 12; m++) {
+                const option = document.createElement("option");
+                option.value = m;
+                option.text = m;
+                if (select.getAttribute("data-default") == m) {
+                    option.selected = true;
+                }
+                select.appendChild(option);
+            }
+        });
+
+        const daySelects = document.querySelectorAll(".att-day");
+        daySelects.forEach(select => {
+            for (let d = 1; d <= 31; d++) {
+                const option = document.createElement("option");
+                option.value = d;
+                option.text = d;
+                if (select.getAttribute("data-default") == d) {
+                    option.selected = true;
+                }
+                select.appendChild(option);
+            }
+        });
+    </script>
+</body>
+
+</html>

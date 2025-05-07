@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Translate Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        #google_translate_element {
+            margin-bottom: 30px;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="google_translate_element"></div>
+
+    <h1>안녕하세요, 디사이트 솔루션입니다.</h1>
+    <p>우리는 웹사이트 제작, AI 영상, 촬영, 마케팅 통합 솔루션을 제공합니다.</p>
+
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                {
+                    pageLanguage: 'ko',
+                    includedLanguages: 'en,ja,zh-CN,zh-TW,fr,de,es,vi,th,ru', // 필요 시 언어 추가
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                },
+                'google_translate_element'
+            );
+        }
+    </script>
+
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+    </script>
+
+</body>
+
+</html>

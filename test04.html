@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>해오름학교 준비적응교육 통지서</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #eee;
+        }
+
+        /* A4용지 영역 박스 스타일 */
+        .a4-wrapper {
+            width: 794px;
+            /* A4 폭(픽셀) */
+            min-height: 1123px;
+            /* A4 높이(픽셀) */
+            margin: 80px auto;
+            /* 위아래로 80px씩 여백, 좌우는 auto로 중앙 정렬 */
+            background: #fff;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            padding: 10px 40px;
+            overflow: hidden;
+            border: 1px solid #000;
+        }
+
+        body {
+            font-family: "맑은 고딕", sans-serif;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #222;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .header-left {
+            flex: 0 0 auto;
+        }
+
+        .header-center {
+            flex: 1;
+            text-align: center;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+        }
+
+        .school-title {
+            font-size: 38px;
+            font-weight: bold;
+            letter-spacing: 12px;
+            padding-bottom: 15px;
+        }
+
+        .title-line {
+            font-weight: bold;
+            margin-top: 20px;
+            background-color: #f0f0f0;
+            padding: 8px;
+            border-radius: 6px;
+        }
+
+        .title-underline {
+            border-bottom: 2px solid #444;
+            margin: 5px 0 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0 0 0;
+        }
+
+        th {
+            background-color: #e0e0e0;
+            font-weight: bold;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px 12px;
+            text-align: center;
+            word-break: keep-all;
+            overflow-wrap: break-word;
+        }
+
+        .section {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .footer {
+            margin-top: 30px;
+            border-top: 8px solid #ccc;
+            padding-top: 20px;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        input,
+        select {
+            border: none;
+            background: none;
+            font-size: 13px;
+            font-family: inherit;
+            text-align: center;
+        }
+
+        /* 기본 화면에서는 달력 아이콘을 그대로 표시,
+           인쇄/PDF 시 아이콘 숨기고 싶다면 아래 주석 해제 후 사용
+        */
+        @media print {
+            input[type="date"]::-webkit-calendar-picker-indicator {
+                opacity: 0;
+                text-align: center;
+            }
+        }
+
+        .small-select1 {
+            width: 30px;
+
+
+
+        }
+
+        .small-select2 {
+            width: 40px;
+
+        }
+
+        .small-input {
+            width: 60px;
+        }
+
+        .input-name {
+            width: 50px;
+            vertical-align: middle;
+        }
+
+        .select-school {
+            width: auto;
+            text-align: left;
+            font-size: 15px;
+        }
+
+        .inline-line {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 4px;
+            line-height: 1.6;
+            word-break: keep-all;
+        }
+
+        .btn-area {
+            text-align: right;
+            margin: 20px auto;
+            max-width: 794px;
+        }
+
+        button {
+            padding: 8px 16px;
+            font-size: 14px;
+            background-color: #2b6cb0;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        @media print {
+            @page {
+                size: A4;
+                margin: 0;
+            }
+
+            html,
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                background: #fff;
+            }
+
+            .btn-area {
+                display: none;
+            }
+
+            input,
+            select {
+                appearance: none;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                border: none;
+                background: none;
+            }
+
+            .a4-wrapper {
+                box-shadow: none;
+                border: none;
+                margin: 0 auto;
+                /* 인쇄 시 가로 중앙 정렬 */
+            }
+
+            /* .no-break {
+                page-break-inside: avoid;
+            } */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="btn-area">
+        <button onclick="window.print()">PDF로 저장</button>
+    </div>
+
+    <div class="a4-wrapper">
+        <div style="padding: 45px;">
+            <div class="header">
+                <div class="header-left">
+                    <img src="img/image01.png" alt="로고" class="logo" />
+                </div>
+                <div class="header-center">
+                    <div class="school-title">해 오 름 학 교</div>
+                </div>
+            </div>
+
+            <div class="no-break" style="font-size: 15px;">
+                수신&nbsp;&nbsp;&nbsp;
+                <select class="select-school">
+                    <optgroup label="칠곡군">
+                        <option>순심고등학교</option>
+                        <option>순심여자고등학교</option>
+                        <option>약목고등학교</option>
+                        <option>북삼고등학교</option>
+                        <option>석적고등학교</option>
+                        <option>동명고등학교</option>
+                    </optgroup>
+                    <optgroup label="구미시">
+                        <option>구미고등학교</option>
+                        <option>구미여자고등학교</option>
+                        <option>금오고등학교</option>
+                        <option>인동고등학교</option>
+                        <option>상모고등학교</option>
+                        <option>사곡고등학교</option>
+                        <option>선주고등학교</option>
+                        <option>형곡고등학교</option>
+                        <option>구미정보고등학교</option>
+                        <option>구미여자상업고등학교</option>
+                        <option>금오공업고등학교</option>
+                        <option>선산고등학교</option>
+                        <option>경북외국어고등학교</option>
+                        <option>경북생활과학고등학교</option>
+                        <option>경구고등학교</option>
+                        <option>구미제일고등학교</option>
+                        <option>오상고등학교</option>
+                        <option>도개고등학교</option>
+                        <option>현일고등학교</option>
+                        <option>구미산동고등학교</option>
+                        <option>구미혜당학교</option>
+                    </optgroup>
+                    <optgroup label="김천시">
+                        <option>김천고등학교</option>
+                        <option>김천여자고등학교</option>
+                        <option>김천중앙고등학교</option>
+                        <option>율곡고등학교</option>
+                        <option>성의고등학교</option>
+                        <option>성의여자고등학교</option>
+                        <option>김천예술고등학교</option>
+                        <option>경북과학기술고등학교</option>
+                        <option>김천생명과학고등학교</option>
+                        <option>한일여자고등학교</option>
+                        <option>경북미용예술고등학교</option>
+                        <option>링컨중·고등학교</option>
+                    </optgroup>
+                    <optgroup label="의성군">
+                        <option>의성고등학교</option>
+                        <option>의성여자고등학교</option>
+                        <option>의성공업고등학교</option>
+                        <option>안계고등학교</option>
+                        <option>금성고등학교</option>
+                        <option>의성유니텍고등학교</option>
+                    </optgroup>
+                </select><br />
+                (경유)&nbsp;
+                <select class="small-select1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>-<select class="small-select2">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                </select>
+                담임선생님
+            </div>
+
+            <div class="title-line no-break" style="font-size: 15px;">
+                제목&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;해오름학교 준비적응교육 통지서 송부 (
+                <select class="small-select1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>-<select class="small-select2">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                </select>
+                <input type="text" class="small-input" placeholder="이름" /> )
+            </div>
+            <div class="title-underline"></div>
+
+            <div class="section no-break" style="font-size: 15px; padding: 0;">
+                1. 귀교의 무궁한 발전을 기원합니다.<br />
+                <div>
+                    2. 관련 : <select class="select-school">
+                        <optgroup label="칠곡군">
+                            <option>순심고등학교</option>
+                            <option>순심여자고등학교</option>
+                            <option>약목고등학교</option>
+                            <option>북삼고등학교</option>
+                            <option>석적고등학교</option>
+                            <option>동명고등학교</option>
+                        </optgroup>
+                        <optgroup label="구미시">
+                            <option>구미고등학교</option>
+                            <option>구미여자고등학교</option>
+                            <option>금오고등학교</option>
+                            <option>인동고등학교</option>
+                            <option>상모고등학교</option>
+                            <option>사곡고등학교</option>
+                            <option>선주고등학교</option>
+                            <option>형곡고등학교</option>
+                            <option>구미정보고등학교</option>
+                            <option>구미여자상업고등학교</option>
+                            <option>금오공업고등학교</option>
+                            <option>선산고등학교</option>
+                            <option>경북외국어고등학교</option>
+                            <option>경북생활과학고등학교</option>
+                            <option>경구고등학교</option>
+                            <option>구미제일고등학교</option>
+                            <option>오상고등학교</option>
+                            <option>도개고등학교</option>
+                            <option>현일고등학교</option>
+                            <option>구미산동고등학교</option>
+                            <option>구미혜당학교</option>
+                        </optgroup>
+                        <optgroup label="김천시">
+                            <option>김천고등학교</option>
+                            <option>김천여자고등학교</option>
+                            <option>김천중앙고등학교</option>
+                            <option>율곡고등학교</option>
+                            <option>성의고등학교</option>
+                            <option>성의여자고등학교</option>
+                            <option>김천예술고등학교</option>
+                            <option>경북과학기술고등학교</option>
+                            <option>김천생명과학고등학교</option>
+                            <option>한일여자고등학교</option>
+                            <option>경북미용예술고등학교</option>
+                            <option>링컨중·고등학교</option>
+                        </optgroup>
+                        <optgroup label="의성군">
+                            <option>의성고등학교</option>
+                            <option>의성여자고등학교</option>
+                            <option>의성공업고등학교</option>
+                            <option>안계고등학교</option>
+                            <option>금성고등학교</option>
+                            <option>의성유니텍고등학교</option>
+                        </optgroup>
+                    </select><span style="margin-left: 5px;">추천서</span> (<input type="date" />) 2025학년도 대안교육 위탁교육과정 학생
+                    추천
+                    (<input type="text" class="input-name" placeholder="이름" /> )
+                </div>
+                3. 해오름학교 입교를 희망한 귀교 학생의 수탁허가 전 준비기간을 통지합니다.
+            </div>
+
+            <form>
+                <table class="no-break">
+                    <thead>
+                        <tr>
+                            <th>소속교</th>
+                            <th>학년반</th>
+                            <th>성명</th>
+                            <th>준비적응교육 기간</th>
+                            <th>수탁기간</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <select class="select-school" class="inline-cell">
+                                    <optgroup label="칠곡군">
+                                        <option>순심고등학교</option>
+                                        <option>순심여자고등학교</option>
+                                        <option>약목고등학교</option>
+                                        <option>북삼고등학교</option>
+                                        <option>석적고등학교</option>
+                                        <option>동명고등학교</option>
+                                    </optgroup>
+                                    <optgroup label="구미시">
+                                        <option>구미고등학교</option>
+                                        <option>구미여자고등학교</option>
+                                        <option>금오고등학교</option>
+                                        <option>인동고등학교</option>
+                                        <option>상모고등학교</option>
+                                        <option>사곡고등학교</option>
+                                        <option>선주고등학교</option>
+                                        <option>형곡고등학교</option>
+                                        <option>구미정보고등학교</option>
+                                        <option>구미여자상업고등학교</option>
+                                        <option>금오공업고등학교</option>
+                                        <option>선산고등학교</option>
+                                        <option>경북외국어고등학교</option>
+                                        <option>경북생활과학고등학교</option>
+                                        <option>경구고등학교</option>
+                                        <option>구미제일고등학교</option>
+                                        <option>오상고등학교</option>
+                                        <option>도개고등학교</option>
+                                        <option>현일고등학교</option>
+                                        <option>구미산동고등학교</option>
+                                        <option>구미혜당학교</option>
+                                    </optgroup>
+                                    <optgroup label="김천시">
+                                        <option>김천고등학교</option>
+                                        <option>김천여자고등학교</option>
+                                        <option>김천중앙고등학교</option>
+                                        <option>율곡고등학교</option>
+                                        <option>성의고등학교</option>
+                                        <option>성의여자고등학교</option>
+                                        <option>김천예술고등학교</option>
+                                        <option>경북과학기술고등학교</option>
+                                        <option>김천생명과학고등학교</option>
+                                        <option>한일여자고등학교</option>
+                                        <option>경북미용예술고등학교</option>
+                                        <option>링컨중·고등학교</option>
+                                    </optgroup>
+                                    <optgroup label="의성군">
+                                        <option>의성고등학교</option>
+                                        <option>의성여자고등학교</option>
+                                        <option>의성공업고등학교</option>
+                                        <option>안계고등학교</option>
+                                        <option>금성고등학교</option>
+                                        <option>의성유니텍고등학교</option>
+                                    </optgroup>
+                                </select>
+                            </td>
+                            <td style="white-space: nowrap;">
+                                <select class=" small-select">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                </select> -<select class="small-select">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                </select>
+                            </td>
+                            <td><input type="text" class="small-input" placeholder="이름" /></td>
+                            <td><input type="date" />
+                                <p>~</p>
+                                <input type="date" />
+                            </td>
+                            <td><input type="date" />
+                                <p>~</p>
+                                <input type="date" />
+                            </td>
+                        </tr>
+
+                        <!-- 안내 문구를 테이블 내부에 추가 -->
+                        <tr>
+                            <td colspan="5"
+                                style="border: 1px solid #ccc; font-size: 15px; text-align: left; padding: 5px auto; font-size: 16px;">
+                                • 준비적응교육&nbsp;기간(5일간) 동안 결석, 조회,&nbsp; 지각 등의 내용을 알려 드리면 출결에
+                                <span style="margin-left: 10px;">반영하시기 바랍니다.</span><br>
+                                <span style="letter-spacing: -0.27px;">
+                                    • 준비적응 기간이 끝나면 수탁 여부를 해오름학교 운영회의를 거쳐 수탁승인 여부를</span>
+                                <span style="margin-left: 10px;">공문으로 발송하겠습니다.</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+
+
+            <span class="bold" style="font-size: 16px;">※ 위탁 학생은 본교 재적 인원에 포함하여 관리합니다.</span>
+            <div class="section no-break" style="font-size: 16px; padding: 0;">붙임 준비적응교육 통지서
+                1부.&nbsp;&nbsp;&nbsp;끝</div>
+
+            <div style=" text-align: center; font-size: 25px; margin-top: 45px;">
+                <strong>해&nbsp;&nbsp;오&nbsp;&nbsp;름&nbsp;&nbsp;학&nbsp;&nbsp;교&nbsp;&nbsp;장</strong>
+            </div>
+            <div class="footer no-break" style="font-size: 14px;">
+                <div style="text-align: left;">
+                    <span style="margin-right: 100px;">담당자 : 김단영</span>
+                    <span style="margin-right: 100px;">교무부장 : 백민수</span>
+                    교감 : 류기덕
+                    <p>협조자</p>
+                    <p>
+                        <span style="margin-right: 40px; ">시행</span>
+                        <span style="margin-right: 75px; ">해오름 2025 -
+                            <select id="selectNumber"></select>
+                            (<input type="date" />)</span>
+                        <span>접수 (<input type="date" />)</span>
+                    </p>
+                    <p>우 39325&nbsp;&nbsp;&nbsp;경상북도 구미시&nbsp;&nbsp; 구미대로 350-27 구미대학교 산학융합캠퍼스 404호</p>
+                    <p>
+                        전화번호 054-440-1211&nbsp;&nbsp;/&nbsp;&nbsp;
+                        팩스번호 054-440-1224&nbsp;&nbsp;/&nbsp;&nbsp;
+                        e메일 herem118@naver.com
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // 선택된 학교 이름의 길이에 따라 select 요소의 width를 조정하는 함수
+    function adjustSelectWidth(select) {
+        var tempSpan = document.createElement("span");
+        var computedStyle = window.getComputedStyle(select);
+        tempSpan.style.font = computedStyle.font;
+        tempSpan.style.visibility = "hidden";
+        tempSpan.style.whiteSpace = "nowrap";
+        document.body.appendChild(tempSpan);
+
+        // 선택된 옵션의 텍스트
+        var text = select.options[select.selectedIndex].text;
+        tempSpan.textContent = text;
+
+        // +10 정도로 간격 최소화
+        var newWidth = tempSpan.offsetWidth + 10;
+
+        document.body.removeChild(tempSpan);
+        select.style.width = newWidth + "px";
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        // 1~1000까지 옵션 추가 (예: 시행 번호)
+        var selectNumber = document.getElementById("selectNumber");
+        for (var i = 1; i <= 1000; i++) {
+            var option = document.createElement("option");
+            option.value = i;
+            option.textContent = i;
+            selectNumber.appendChild(option);
+        }
+
+        // 모든 학교 select 요소 가져오기 및 동기화 (학교명 변경 시)
+        var schoolSelects = document.querySelectorAll(".select-school");
+        // 초기 너비 조정
+        schoolSelects.forEach(function (sel) {
+            adjustSelectWidth(sel);
+        });
+        // change 이벤트 발생 시 모든 select 요소에 동일한 값 적용
+        schoolSelects.forEach(function (sel) {
+            sel.addEventListener("change", function () {
+                adjustSelectWidth(sel);
+                var newValue = sel.value;
+                schoolSelects.forEach(function (otherSel) {
+                    if (otherSel !== sel) {
+                        otherSel.value = newValue;
+                        adjustSelectWidth(otherSel);
+                    }
+                });
+            });
+        });
+
+        // 이름 입력 필드 동기화 (small-input, input-name)
+        var nameInputs = document.querySelectorAll('input[type="text"].small-input, input[type="text"].input-name');
+        nameInputs.forEach(function (input) {
+            input.addEventListener("input", function () {
+                var newName = input.value;
+                nameInputs.forEach(function (otherInput) {
+                    if (otherInput !== input) {
+                        otherInput.value = newName;
+                    }
+                });
+            });
+        });
+
+        // "1-1" 숫자 동기화 기능 추가
+        // 그룹1: 학년 (첫 번째 숫자)
+        var group1 = [];
+        // 헤더 및 제목 부분의 학년 select (클래스 small-select1)
+        var headerGroup1 = document.querySelectorAll(".small-select1");
+        headerGroup1.forEach(function (sel) {
+            group1.push(sel);
+        });
+        // 표의 학년반 부분에서 첫 번째 select (학년, 클래스 small-select)
+        var tableRow = document.querySelector("tbody tr");
+        if (tableRow) {
+            var tdElements = tableRow.querySelectorAll("td");
+            // 학년반 셀은 두 번째 td (인덱스 1)에 위치
+            var gradeCell = tdElements[1];
+            if (gradeCell) {
+                var gradeSelects = gradeCell.querySelectorAll("select.small-select");
+                if (gradeSelects.length > 0) {
+                    group1.push(gradeSelects[0]);
+                }
+            }
+        }
+
+        // 그룹2: 반 (두 번째 숫자)
+        var group2 = [];
+        // 헤더 및 제목 부분의 반 select (클래스 small-select2)
+        var headerGroup2 = document.querySelectorAll(".small-select2");
+        headerGroup2.forEach(function (sel) {
+            group2.push(sel);
+        });
+        // 표의 학년반 부분에서 두 번째 select (반, 클래스 small-select)
+        if (tableRow) {
+            var tdElements = tableRow.querySelectorAll("td");
+            var gradeCell = tdElements[1];
+            if (gradeCell) {
+                var gradeSelects = gradeCell.querySelectorAll("select.small-select");
+                if (gradeSelects.length > 1) {
+                    group2.push(gradeSelects[1]);
+                }
+            }
+        }
+
+        // 그룹1 동기화 (학년)
+        group1.forEach(function (select) {
+            select.addEventListener("change", function () {
+                var newValue = select.value;
+                group1.forEach(function (otherSelect) {
+                    if (otherSelect !== select) {
+                        otherSelect.value = newValue;
+                        adjustSelectWidth(otherSelect);
+                    }
+                });
+            });
+        });
+
+        // 그룹2 동기화 (반)
+        group2.forEach(function (select) {
+            select.addEventListener("change", function () {
+                var newValue = select.value;
+                group2.forEach(function (otherSelect) {
+                    if (otherSelect !== select) {
+                        otherSelect.value = newValue;
+                        adjustSelectWidth(otherSelect);
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+
+
+</html>
